@@ -10,7 +10,7 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<a href="AdminController">See All Admin</a>
+<a href="AdminController">See All Employees</a>
 
 </body>
 </html>

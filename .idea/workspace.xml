@@ -10,8 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/list_admins.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/AdminDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/list_employees.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list_employees.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/employees.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/employees.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/globalStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/globalStyles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670153717554</updated>
-      <workItem from="1670153718799" duration="4913000" />
+      <workItem from="1670153718799" duration="7886000" />
     </task>
     <servers />
   </component>
