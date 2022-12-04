@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="" />
+    <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/AdminCommandEnums.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/add-employee-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/list_employees.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list_employees.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +26,7 @@
       <list>
         <option value="Class" />
         <option value="Jsp File" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -105,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670153717554</updated>
-      <workItem from="1670153718799" duration="8909000" />
+      <workItem from="1670153718799" duration="10009000" />
     </task>
     <servers />
   </component>

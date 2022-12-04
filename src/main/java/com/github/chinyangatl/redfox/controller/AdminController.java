@@ -3,6 +3,7 @@ package com.github.chinyangatl.redfox.controller;
 import com.github.chinyangatl.redfox.model.beans.Admin;
 import com.github.chinyangatl.redfox.model.beans.Employee;
 import com.github.chinyangatl.redfox.model.dao.AdminDAO;
+import com.github.chinyangatl.redfox.utils.AdminCommandEnums;
 import jakarta.annotation.Resource;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -33,6 +34,27 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String command = request.getParameter("command");
+
+            if(command == null) command = String.valueOf(AdminCommandEnums.LIST_EMPLOYEES);
+
+
+            switch (command) {
+                case "LIST_EMPLOYEES" :
+                    listEmployees(request, response);
+                    break;
+
+                case "ADD_EMPLOYEE" :
+                    addEmployee(request, response);
+                    break;
+
+                default:
+                    listEmployees(request, response);
+            }
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
 //        listAdmins(request, response);
         listEmployees(request, response);
 
@@ -55,5 +77,22 @@ public class AdminController extends HttpServlet {
         request.setAttribute("employee_list", employees);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list_employees.jsp");
         requestDispatcher.forward(request, response);
+    }
+
+    private void addEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        // read student info from form data
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        // create a new student object
+        Employee employee = new Employee(name, email, password);
+
+        // add the student to the database
+        adminDAO.addEmployee(employee);
+
+        // send back to main page (the student list)
+        listEmployees(request, response);
     }
 }
