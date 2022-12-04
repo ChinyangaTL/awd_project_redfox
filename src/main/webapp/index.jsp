@@ -10,11 +10,7 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<c:set var="stuff" value="<%= new java.util.Date()%>" />
-Time on the server is ${stuff}
+<a href="AdminController">See All Admin</a>
 
-<c:if test="${3>2}">
-    good to go
-</c:if>
 </body>
 </html>

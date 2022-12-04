@@ -25,7 +25,7 @@ public class AdminDAO {
 
         try {
             connection = dataSource.getConnection();
-            String sql = "select * from student";
+            String sql = "select * from admin";
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
@@ -35,8 +35,8 @@ public class AdminDAO {
                 String password = resultSet.getString("password");
 
 
-                Admin student = new Admin(id, email, password);
-                admins.add(student);
+                Admin admin = new Admin(id, email, password);
+                admins.add(admin);
             }
             return admins;
         } catch (SQLException e) {
