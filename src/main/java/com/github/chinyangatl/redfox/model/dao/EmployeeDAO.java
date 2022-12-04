@@ -118,20 +118,39 @@ public class EmployeeDAO {
         }
     }
 
-    public void addActor(Actor actor) {
+    public int addActor(Actor actor) {
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
         try {
             connection = dataSource.getConnection();
 
-            statement = connection.prepareStatement(SQLStatements.ADD_ACTOR);
-             statement.setString(1, actor.getFirstName());
+            statement = connection.prepareStatement(SQLStatements.ADD_ACTOR, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, actor.getFirstName());
             statement.setString(2, actor.getLastName());
             statement.setString(3, actor.getDob());
 
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                statement.setString(1, actor.getFirstName());
+                statement.setString(2, actor.getLastName());
+                statement.setString(3, actor.getDob());
+                int affectedRows = statement.executeUpdate();
 
-            statement.execute();
+                if(affectedRows != 1) {
+                    throw new SQLException("Couldn't insert actor");
+                }
+
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if(generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Couldn't get id for actor");
+                }
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -140,20 +159,39 @@ public class EmployeeDAO {
         }
     }
 
-    public void addDirector(Director director) {
+    public int addDirector(Director director) {
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
         try {
             connection = dataSource.getConnection();
 
-            statement = connection.prepareStatement(SQLStatements.ADD_DIRECTOR);
+            statement = connection.prepareStatement(SQLStatements.ADD_DIRECTOR, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, director.getFirstName());
             statement.setString(2, director.getLastName());
             statement.setString(3, director.getDob());
 
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                statement.setString(1, director.getFirstName());
+                statement.setString(2, director.getLastName());
+                statement.setString(3, director.getDob());
+                int affectedRows = statement.executeUpdate();
 
-            statement.execute();
+                if(affectedRows != 1) {
+                    throw new SQLException("Couldn't insert director");
+                }
+
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if(generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Couldn't get id for director");
+                }
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -162,17 +200,16 @@ public class EmployeeDAO {
         }
     }
 
-    public void addMovie(Movie movie) {
+    public int addMovie(Movie movie) {
         Connection connection = null;
         PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
         try {
             connection = dataSource.getConnection();
 
-            statement = connection.prepareStatement(SQLStatements.ADD_MOVIE);
-//            INSERT INTO movie VALUES(
-//                    1, "Se7en", "thriller", "September 22, 1995", 4.9, "image", "lorem ipsum"
-//)
+            statement = connection.prepareStatement(SQLStatements.ADD_MOVIE, Statement.RETURN_GENERATED_KEYS);
+
             statement.setString(1, movie.getMovieTitle());
             statement.setString(2, movie.getGenre());
             statement.setString(3, movie.getReleaseDate());
@@ -180,7 +217,30 @@ public class EmployeeDAO {
             statement.setString(5, movie.getImgUrl());
             statement.setString(6, movie.getDescription());
 
-            statement.execute();
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                statement.setString(1, movie.getMovieTitle());
+                statement.setString(2, movie.getGenre());
+                statement.setString(3, movie.getReleaseDate());
+                statement.setFloat(4, movie.getRating());
+                statement.setString(5, movie.getImgUrl());
+                statement.setString(6, movie.getDescription());
+
+                int affectedRows = statement.executeUpdate();
+
+                if(affectedRows != 1) {
+                    throw new SQLException("Couldn't insert movie");
+                }
+
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if(generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Couldn't get id for movie");
+                }
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -188,6 +248,13 @@ public class EmployeeDAO {
             close(connection, statement, null);
         }
     }
+
+    public void linkMovieAndDirector(Movie movie, Director director) {
+
+    }
+
+    public void linkMovieWithCase(Movie movie, List<Actor> actors) {}
+
 
     private void close(Connection connection, Statement statement, ResultSet resultSet) {
         try {

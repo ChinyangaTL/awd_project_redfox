@@ -21,4 +21,7 @@ public class SQLStatements {
 
     public static final String ADD_DIRECTOR = "INSERT INTO director VALUES(?, ?, ?)";
 
+    public static final String QUERY_ACTOR = "SELECT id FROM actor WHERE firstName = ? AND surname = ?";
+
+    public static final String QUERY_DIRECTOR = "SELECT id FROM director WHERE firstName = ? AND surname = ?";
 }
