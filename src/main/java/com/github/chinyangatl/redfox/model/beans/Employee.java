@@ -3,12 +3,12 @@ package com.github.chinyangatl.redfox.model.beans;
 public class Employee extends Actor{
     private String name;
 
-    public Employee(String email, String password, String name) {
+    public Employee(String name, String email, String password) {
         super(email, password);
         this.name = name;
     }
 
-    public Employee(int id, String email, String password, String name) {
+    public Employee(int id, String name, String email, String password) {
         super(id, email, password);
         this.name = name;
     }
