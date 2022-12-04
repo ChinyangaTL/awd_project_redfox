@@ -118,6 +118,77 @@ public class EmployeeDAO {
         }
     }
 
+    public void addActor(Actor actor) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+
+            statement = connection.prepareStatement(SQLStatements.ADD_ACTOR);
+             statement.setString(1, actor.getFirstName());
+            statement.setString(2, actor.getLastName());
+            statement.setString(3, actor.getDob());
+
+
+            statement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
+    public void addDirector(Director director) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+
+            statement = connection.prepareStatement(SQLStatements.ADD_DIRECTOR);
+            statement.setString(1, director.getFirstName());
+            statement.setString(2, director.getLastName());
+            statement.setString(3, director.getDob());
+
+
+            statement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
+    public void addMovie(Movie movie) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+
+            statement = connection.prepareStatement(SQLStatements.ADD_MOVIE);
+//            INSERT INTO movie VALUES(
+//                    1, "Se7en", "thriller", "September 22, 1995", 4.9, "image", "lorem ipsum"
+//)
+            statement.setString(1, movie.getMovieTitle());
+            statement.setString(2, movie.getGenre());
+            statement.setString(3, movie.getReleaseDate());
+            statement.setFloat(4, movie.getRating());
+            statement.setString(5, movie.getImgUrl());
+            statement.setString(6, movie.getDescription());
+
+            statement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
     private void close(Connection connection, Statement statement, ResultSet resultSet) {
         try {
             if(connection != null) {

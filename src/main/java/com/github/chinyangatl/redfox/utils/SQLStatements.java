@@ -14,4 +14,11 @@ public class SQLStatements {
     public static final String GET_MOVIE_ACTORS = "SELECT actor.firstName, actor.surname, actor.dob from movie_actor\n" +
             "INNER JOIN actor on movie_actor.actorId = actor.id\n" +
             "INNER JOIN movie on movie_actor.movieId = ?";
+
+    public static final String ADD_MOVIE = "INSERT INTO movie VALUES(?, ?, ?, ?, ?, ?)";
+
+    public static final String ADD_ACTOR = "INSERT INTO actor VALUES(?, ?, ?)";
+
+    public static final String ADD_DIRECTOR = "INSERT INTO director VALUES(?, ?, ?)";
+
 }
