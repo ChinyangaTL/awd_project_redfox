@@ -2,12 +2,10 @@ package com.github.chinyangatl.redfox.model.dao;
 
 import com.github.chinyangatl.redfox.model.beans.Admin;
 import com.github.chinyangatl.redfox.model.beans.Employee;
+import com.github.chinyangatl.redfox.utils.SQLStatements;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +24,8 @@ public class AdminDAO {
 
         try {
             connection = dataSource.getConnection();
-            String sql = "select * from employee";
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
+            resultSet = statement.executeQuery(SQLStatements.GET_EMPLOYEES);
 
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
@@ -47,6 +44,28 @@ public class AdminDAO {
             close(connection, statement, resultSet);
         }
 
+    }
+
+    public void addEmployee(Employee employee) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+
+            statement = connection.prepareStatement(SQLStatements.ADD_EMPLOYEE);
+
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getEmail());
+            statement.setString(3, employee.getPassword());
+
+            statement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
     }
 
     public List<Admin> getAdmins() {
