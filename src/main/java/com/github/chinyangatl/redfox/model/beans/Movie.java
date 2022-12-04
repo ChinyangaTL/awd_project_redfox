@@ -3,6 +3,7 @@ package com.github.chinyangatl.redfox.model.beans;
 import java.util.ArrayList;
 
 public class Movie {
+    private int id;
     private String movieTitle;
     private Director director;
     private ArrayList<Actor> actors;
@@ -12,7 +13,8 @@ public class Movie {
     private String imgUrl;
     private String description;
 
-    public Movie(String movieTitle, String genre, String releaseDate, float rating, String imgUrl, String description) {
+    public Movie(int id, String movieTitle, String genre, String releaseDate, float rating, String imgUrl, String description) {
+        this.id = id;
         this.movieTitle = movieTitle;
         this.genre = genre;
         this.releaseDate = releaseDate;
@@ -21,7 +23,8 @@ public class Movie {
         this.description = description;
     }
 
-    public Movie(String movieTitle, Director director, ArrayList<Actor> actors, String genre, String releaseDate, float rating, String imgUrl, String description) {
+    public Movie(int id, String movieTitle, Director director, ArrayList<Actor> actors, String genre, String releaseDate, float rating, String imgUrl, String description) {
+        this.id = id;
         this.movieTitle = movieTitle;
         this.director = director;
         this.actors = actors;
