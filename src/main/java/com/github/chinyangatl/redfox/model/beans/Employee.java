@@ -1,6 +1,6 @@
 package com.github.chinyangatl.redfox.model.beans;
 
-public class Employee extends Actor{
+public class Employee extends GeneralActor {
     private String name;
 
     public Employee(String name, String email, String password) {

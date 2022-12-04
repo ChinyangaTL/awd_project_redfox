@@ -11,6 +11,7 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <a href="AdminController">See All Employees</a>
+<a href="EmployeeController">See All Movies</a>
 
 </body>
 </html>

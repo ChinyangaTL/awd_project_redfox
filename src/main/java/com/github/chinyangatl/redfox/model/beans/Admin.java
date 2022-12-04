@@ -1,6 +1,6 @@
 package com.github.chinyangatl.redfox.model.beans;
 
-public class Admin extends Actor{
+public class Admin extends GeneralActor {
     public Admin(String email, String password) {
         super(email, password);
     }
