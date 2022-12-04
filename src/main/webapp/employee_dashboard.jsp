@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Dashboard</title>
@@ -12,7 +13,10 @@
 
         <c:forEach var="movie" items="${movie_list}">
             <article class='employee-item'>
-                <p class='title'>${movie.name}</p>
+                <p class='title'>${movie.movieTitle}</p>
+                <c:forEach var="actor" items="${movie.actors}">
+                    <p>${actor.firstName}</p>
+                </c:forEach>
                 <div class='btn-container'>
                     <button
                             type='button'
