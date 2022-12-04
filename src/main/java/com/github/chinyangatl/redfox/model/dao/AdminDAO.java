@@ -85,6 +85,7 @@ public class AdminDAO {
             resultSet = statement.executeQuery();
             if(resultSet.next()) {
                 System.out.println("Success");
+                System.out.println(resultSet.getString("role"));
                 return "Success";
             }
 
@@ -95,12 +96,6 @@ public class AdminDAO {
         } finally {
             close(connection, statement, null);
         }
-        // try to find the account
-
-
-        // if no account return an error
-
-        // if account populate the account with adequate details
     }
 
     public List<Admin> getAdmins() {

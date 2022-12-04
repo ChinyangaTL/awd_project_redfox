@@ -83,19 +83,14 @@ public class AdminController extends HttpServlet {
     }
 
     private void addEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        // read student info from form data
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // create a new student object
         Employee employee = new Employee(name, email, password);
 
-        // add the student to the database
         adminDAO.addEmployee(employee);
 
-        // send back to main page (the student list)
         listEmployees(request, response);
     }
 
