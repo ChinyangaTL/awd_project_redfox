@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet(name = "AdminController", value = "/AdminController")
 public class AdminController extends HttpServlet {
@@ -34,6 +35,7 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("I am here in get");
         try {
             String command = request.getParameter("command");
 
@@ -62,7 +64,8 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("I am here in post");
+        adminLogin(request, response);
     }
 
     private void listAdmins(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -80,19 +83,26 @@ public class AdminController extends HttpServlet {
     }
 
     private void addEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        // read student info from form data
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // create a new student object
         Employee employee = new Employee(name, email, password);
 
-        // add the student to the database
         adminDAO.addEmployee(employee);
 
-        // send back to main page (the student list)
         listEmployees(request, response);
+    }
+
+    private void adminLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String loginResult = adminDAO.login( request.getParameter("email"),  request.getParameter("password"));
+        System.out.println("Login result" + loginResult);
+        request.setAttribute("loginResult", loginResult);
+
+        if(Objects.equals(loginResult, "Success")) {
+           doGet(request, response);
+        }
+
+
     }
 }
