@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Director.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/FilmActor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/GeneralActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/employeeDashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employeeDashboard.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
