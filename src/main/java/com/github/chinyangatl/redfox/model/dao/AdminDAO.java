@@ -1,6 +1,7 @@
 package com.github.chinyangatl.redfox.model.dao;
 
 import com.github.chinyangatl.redfox.model.beans.Admin;
+import com.github.chinyangatl.redfox.model.beans.Employee;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,6 +16,37 @@ public class AdminDAO {
 
     public AdminDAO(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public List<Employee> getEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            String sql = "select * from employee";
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+
+
+                Employee employee = new Employee(id, name, email, password);
+                employees.add(employee);
+            }
+            return employees;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, resultSet);
+        }
+
     }
 
     public List<Admin> getAdmins() {

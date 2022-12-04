@@ -1,6 +1,7 @@
 package com.github.chinyangatl.redfox.controller;
 
 import com.github.chinyangatl.redfox.model.beans.Admin;
+import com.github.chinyangatl.redfox.model.beans.Employee;
 import com.github.chinyangatl.redfox.model.dao.AdminDAO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.*;
@@ -32,7 +33,9 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        listAdmins(request, response);
+//        listAdmins(request, response);
+        listEmployees(request, response);
+
     }
 
     @Override
@@ -44,6 +47,13 @@ public class AdminController extends HttpServlet {
         List<Admin> admins = adminDAO.getAdmins();
         request.setAttribute("admin_list", admins);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list_admins.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
+    private void listEmployees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Employee> employees = adminDAO.getEmployees();
+        request.setAttribute("employee_list", employees);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list_employees.jsp");
         requestDispatcher.forward(request, response);
     }
 }
