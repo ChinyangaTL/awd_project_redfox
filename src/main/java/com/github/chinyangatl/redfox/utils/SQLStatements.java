@@ -15,13 +15,19 @@ public class SQLStatements {
             "INNER JOIN actor on movie_actor.actorId = actor.id\n" +
             "INNER JOIN movie on movie_actor.movieId = ?";
 
-    public static final String ADD_MOVIE = "INSERT INTO movie VALUES(?, ?, ?, ?, ?, ?)";
+    public static final String ADD_MOVIE = "INSERT INTO movie (movieTitle, genre, releaseDate, rating, img, description) VALUES(?, ?, ?, ?, ?, ?)";
 
-    public static final String ADD_ACTOR = "INSERT INTO actor VALUES(?, ?, ?)";
+    public static final String ADD_ACTOR = "INSERT INTO actor (firstname, surname, dob) VALUES(?, ?, ?)";
 
-    public static final String ADD_DIRECTOR = "INSERT INTO director VALUES(?, ?, ?)";
+    public static final String ADD_DIRECTOR = "INSERT INTO director (firstname, surname, dob) VALUES(?, ?, ?)";
 
     public static final String QUERY_ACTOR = "SELECT id FROM actor WHERE firstName = ? AND surname = ?";
 
     public static final String QUERY_DIRECTOR = "SELECT id FROM director WHERE firstName = ? AND surname = ?";
+
+    public static final String QUERY_MOVIE = "SELECT id FROM movie WHERE movieTitle = ? AND releaseDate = ?";
+
+    public static final String LINK_MOVIE_DIRECTOR = "INSERT INTO movie_director VALUES(?, ?);";
+
+    public static final String LINK_MOVIE_ACTOR = "INSERT INTO movie_actor VALUES(?, ?);";
 }
