@@ -68,6 +68,41 @@ public class AdminDAO {
         }
     }
 
+    public String login(String email, String password) {
+        System.out.println("Email in dao " + email);
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.QUERY_ADMIN_ACCOUNT);
+
+            statement.setString(1, email);
+            statement.setString(2, password);
+
+
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                System.out.println("Success");
+                return "Success";
+            }
+
+            return "No account found";
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+        // try to find the account
+
+
+        // if no account return an error
+
+        // if account populate the account with adequate details
+    }
+
     public List<Admin> getAdmins() {
         List<Admin> admins = new ArrayList<>();
         Connection connection = null;
