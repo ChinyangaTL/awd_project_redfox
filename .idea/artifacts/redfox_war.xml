@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="redfox:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>redfox</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="redfox-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="redfox:war exploded" />
+    </root>
+  </artifact>
+</component>
