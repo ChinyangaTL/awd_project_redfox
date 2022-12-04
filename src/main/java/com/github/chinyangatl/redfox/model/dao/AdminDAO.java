@@ -2,6 +2,7 @@ package com.github.chinyangatl.redfox.model.dao;
 
 import com.github.chinyangatl.redfox.model.beans.Admin;
 import com.github.chinyangatl.redfox.model.beans.Employee;
+import com.github.chinyangatl.redfox.utils.SQLStatements;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -23,9 +24,8 @@ public class AdminDAO {
 
         try {
             connection = dataSource.getConnection();
-            String sql = "select * from employee";
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
+            resultSet = statement.executeQuery(SQLStatements.GET_EMPLOYEES);
 
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
@@ -53,9 +53,7 @@ public class AdminDAO {
         try {
             connection = dataSource.getConnection();
 
-            String sql = "INSERT INTO employee (name, email, password) VALUES (?, ?, ?)";
-
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(SQLStatements.ADD_EMPLOYEE);
 
             statement.setString(1, employee.getName());
             statement.setString(2, employee.getEmail());
