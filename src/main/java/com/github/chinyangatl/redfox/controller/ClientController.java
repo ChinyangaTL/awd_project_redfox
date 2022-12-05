@@ -33,7 +33,40 @@ public class ClientController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        listMovies(request, response);
+        try {
+            String command = request.getParameter("command");
+
+            if(command == null) command = "VIEW_MOVIES";
+
+            switch (command) {
+                case "VIEW_MOVIES":
+                    listMovies(request, response);
+                case "VIEW_SINGLE_MOVIE":
+                    viewSingleMovie(request, response);
+                case "RATE_MOVIE":
+                    rateMovie(request, response);
+                default:
+                    listMovies(request, response);
+            }
+        }  catch (Exception e) {
+            throw new ServletException(e);
+        }
+    }
+
+    private void rateMovie(HttpServletRequest request, HttpServletResponse response) {
+        int movieId = Integer.parseInt(request.getParameter("movieId"));
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
+
+    }
+
+    private void viewSingleMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int movieId = Integer.parseInt(request.getParameter("singleMovieId"));
+        Movie movie = clientDAO.getSingleMovie(movieId);
+
+        request.setAttribute("currentMovie", movie);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/single_movie.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     @Override

@@ -13,6 +13,8 @@ public class SQLStatements {
 
     public static final String GET_MOVIES = "SELECT * FROM movie";
 
+    public static final String GET_SINGLE_MOVIE = "SELECT * FROM movie WHERE id = ?";
+
     public static final String GET_MOVIE_DIRECTOR = "SELECT director.id, director.firstName, director.surname, director.dob from movie_director \n" +
             "INNER JOIN director on movie_director.directorId = director.id\n" +
             "INNER JOIN movie on movie_director.movieId = ?";
