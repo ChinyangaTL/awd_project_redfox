@@ -46,12 +46,20 @@ public class ClientController extends HttpServlet {
                     viewSingleMovie(request, response);
                 case "RATE_MOVIE":
                     rateMovie(request, response);
+                case "ADD_TO_FAVS":
+                    addMovieToUserFavs(request, response);
                 default:
                     listMovies(request, response);
             }
         }  catch (Exception e) {
             throw new ServletException(e);
         }
+    }
+
+    private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) {
+        // TODO: CHANGE EMAIL TO DYNAMIC DEPENDING ON SESSION
+        clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")));
+        //clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")))
     }
 
     private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {

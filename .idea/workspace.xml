@@ -14,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/ClientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/single_movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/single_movie.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -47,4 +47,8 @@ public class SQLStatements {
             "SET movie.rating = (select avg(rating) as avgscore\n" +
             "        from movie_ratings \n" +
             "        where movieId = ?)";
+
+    public static final String CHECK_FAV_MOVIE_COUNT = "SELECT COUNT(movieId) FROM user_fav_movies WHERE userEmail = ?";
+
+    public static final String ADD_MOVIE_TO_USER_FAV = "INSERT INTO user_fav_movies VALUES(?, ?)";
 }
