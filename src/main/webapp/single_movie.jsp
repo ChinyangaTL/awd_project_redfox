@@ -10,11 +10,38 @@
 <html>
 <head>
     <title>Title</title>
+
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/singleMovie.css">
 </head>
 <body>
-    <% request.setAttribute("movie", request.getParameter("movie"));%>
-    <c:set var="movie" >
-        ${movie.movieTitle}
-    </c:set>
+
+<c:set var="movie" value='<%= request.getAttribute("currentMovie") %>'>
+    
+</c:set>
+<article class='cocktail'>
+    <div class='img-container'>
+        <img src=${movie.imgUrl} alt=${movie.movieTitle} />
+    </div>
+    <div class='cocktail-footer'>
+        <h3>${movie.movieTitle}</h3>
+        <h4>Directed By: ${movie.director.firstName} ${movie.director.lastName}</h4>
+        <p style="display: inline">Starring: </p>
+        <c:forEach var="actor" items="${movie.actors}">
+            <p style="display: inline"> ${actor.firstName} ${actor.lastName}</p>,
+        </c:forEach>
+
+        <p>Description: ${movie.description}</p>
+    </div>
+</article>
+
+<div>
+    <p>Seen this movie? Give it a rating</p>
+    <form method="">
+        <input type="number" name="rating" min="0" max="5">
+        <input type="submit" value="Rate" />
+    </form>
+</div>
 </body>
 </html>

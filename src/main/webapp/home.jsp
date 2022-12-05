@@ -1,3 +1,4 @@
+<%@ page import="java.net.http.HttpRequest" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -17,10 +18,18 @@
       <div className="underline"></div>
     </div>
 
-      <jsp:include page="components/categories.jsp"/>
+    <jsp:include page="components/categories.jsp"/>
+
+
+
 
     <section class="section-center">
+
+
+
       <c:forEach var="movie" items="${movie_list}">
+        <form method="get" action="SingleMovie">
+        <input hidden name="singleMovieId" value=${movie.id} />
         <article class='menu-item'>
           <img src=${movie.imgUrl} alt=${movie.movieTitle} class='photo' />
           <div class='item-info'>
@@ -29,11 +38,18 @@
               <h4 class='price'>${movie.rating}</h4>
             </header>
             <p class='item-text'>${movie.description}</p>
-            <a href="SingleMovie">View More</a>
+
+
+            <input type="submit" value="View More" />
           </div>
         </article>
+      </form>
       </c:forEach>
+
+
     </section>
+
+
 
 
   </section>

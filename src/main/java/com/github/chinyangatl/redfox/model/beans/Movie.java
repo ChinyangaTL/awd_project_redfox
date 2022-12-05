@@ -23,6 +23,14 @@ public class Movie {
         this.description = description;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Movie(int id, String movieTitle, Director director, ArrayList<Actor> actors, String genre, String releaseDate, float rating, String imgUrl, String description) {
         this.id = id;
         this.movieTitle = movieTitle;
