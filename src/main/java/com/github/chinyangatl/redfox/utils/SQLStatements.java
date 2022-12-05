@@ -38,4 +38,13 @@ public class SQLStatements {
     public static final String LINK_MOVIE_DIRECTOR = "INSERT INTO movie_director VALUES(?, ?);";
 
     public static final String LINK_MOVIE_ACTOR = "INSERT INTO movie_actor VALUES(?, ?);";
+
+    public static final String INSERT_MOVIE_RATING = "INSERT INTO movie_ratings VALUES(?, ?, ?)";
+
+    public static final String UPDATE_MOVIE_RATING = "UPDATE movie   \n" +
+            "INNER JOIN movie_ratings   \n" +
+            "ON movie.id = movie_ratings.movieId  \n" +
+            "SET movie.rating = (select avg(rating) as avgscore\n" +
+            "        from movie_ratings \n" +
+            "        where movieId = ?)";
 }

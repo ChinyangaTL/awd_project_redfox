@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.*;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,10 +54,13 @@ public class ClientController extends HttpServlet {
         }
     }
 
-    private void rateMovie(HttpServletRequest request, HttpServletResponse response) {
+    private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int movieId = Integer.parseInt(request.getParameter("movieId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
-
+        // TODO: CHANGE EMAIL TO DYNAMIC DEPENDING ON SESSION
+        String userEmail = "lip@shameless.com";
+        clientDAO.populateMovieRatingsTable(movieId, userEmail, rating);
+        clientDAO.updateMovieRating(movieId);
 
     }
 
