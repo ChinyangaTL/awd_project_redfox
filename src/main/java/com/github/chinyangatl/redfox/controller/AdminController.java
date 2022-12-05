@@ -35,7 +35,6 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("I am here in get");
         try {
             String command = request.getParameter("command");
 
@@ -57,9 +56,6 @@ public class AdminController extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException(e);
         }
-//        listAdmins(request, response);
-        listEmployees(request, response);
-
     }
 
     @Override
