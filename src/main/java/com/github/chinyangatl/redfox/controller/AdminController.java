@@ -60,7 +60,6 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("I am here in post");
         adminLogin(request, response);
     }
 
@@ -92,13 +91,10 @@ public class AdminController extends HttpServlet {
 
     private void adminLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String loginResult = adminDAO.login( request.getParameter("email"),  request.getParameter("password"));
-        System.out.println("Login result" + loginResult);
         request.setAttribute("loginResult", loginResult);
 
         if(Objects.equals(loginResult, "Success")) {
            doGet(request, response);
         }
-
-
     }
 }

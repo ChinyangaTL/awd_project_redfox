@@ -10,9 +10,16 @@
 </head>
 <body>
 <main>
-  <section class="section">
-    <div class='section-center'>
+  <section class="menu section">
 
+    <div className="title">
+      <h2>RedFox</h2>
+      <div className="underline"></div>
+    </div>
+
+      <jsp:include page="components/categories.jsp"/>
+
+    <section class="section-center">
       <c:forEach var="movie" items="${movie_list}">
         <article class='menu-item'>
           <img src=${movie.imgUrl} alt=${movie.movieTitle} class='photo' />
@@ -22,11 +29,13 @@
               <h4 class='price'>${movie.rating}</h4>
             </header>
             <p class='item-text'>${movie.description}</p>
+            <a href="SingleMovie">View More</a>
           </div>
         </article>
       </c:forEach>
+    </section>
 
-    </div>
+
   </section>
 </main>
 

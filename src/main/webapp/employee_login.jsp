@@ -11,7 +11,7 @@
     <title>Login</title>
 </head>
 <body>
-  <form action="AdminController" method="POST">
+  <form action="EmployeeController" method="POST">
     <table>
       <tbody>
       <tr>
