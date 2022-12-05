@@ -216,6 +216,44 @@ public class ClientDAO {
         }
     }
 
+    public void populateMovieRatingsTable(int movieId, String userEmail, int rating) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = dataSource.getConnection();
+
+            statement = connection.prepareStatement(SQLStatements.INSERT_MOVIE_RATING);
+            statement.setInt(1, movieId);
+            statement.setString(2, userEmail);
+            statement.setInt(3, rating);
+
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+
+
+    }
+
+    public void updateMovieRating(int movieId) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        PreparedStatement statement = null;
+
+        try {
+            statement = connection.prepareStatement(SQLStatements.UPDATE_MOVIE_RATING);
+            statement.setInt(1, movieId);
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
     private void close(Connection connection, Statement statement, ResultSet resultSet) {
         try {
             if(connection != null) {
