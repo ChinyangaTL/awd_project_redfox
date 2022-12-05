@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Add Employee</title>
+    <title>Add Actor</title>
 
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/add-student-style.css">
@@ -11,27 +11,27 @@
 <body>
 
 <div id="container">
-    <h3>Add Employee</h3>
+    <h3>Add Actor</h3>
 
-    <form action="AdminController" method="GET">
+    <form action="EmployeeController" method="GET">
 
-        <input type="hidden" name="command" value="ADD_EMPLOYEE" />
+        <input type="hidden" name="command" value="ADD_ACTOR" />
 
         <table>
             <tbody>
             <tr>
-                <td><label>Name:</label></td>
-                <td><input type="text" name="name" /></td>
+                <td><label>First Name:</label></td>
+                <td><input type="text" name="firstName" /></td>
             </tr>
 
             <tr>
-                <td><label>Email:</label></td>
-                <td><input type="text" name="email" /></td>
+                <td><label>Surname:</label></td>
+                <td><input type="text" name="surname" /></td>
             </tr>
 
             <tr>
-                <td><label>Password:</label></td>
-                <td><input type="text" name="password" /></td>
+                <td><label>Date Of Birth:</label></td>
+                <td><input type="text" name="dob" /></td>
             </tr>
 
             <tr>
@@ -52,14 +52,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-

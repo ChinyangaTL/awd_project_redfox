@@ -10,16 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/EmployeeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/add_actor_form.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/add_director_form.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/add_movie_form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Actor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Director.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Director.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/FilmActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/FilmActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/beans/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/employeeDashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employee_dashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/add-employee-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/add-employee-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employee_dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employee_dashboard.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -167,6 +168,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670153717554</updated>
       <workItem from="1670153718799" duration="16395000" />
+      <workItem from="1670197374604" duration="1462000" />
     </task>
     <servers />
   </component>

@@ -11,6 +11,12 @@ public class FilmActor {
         this.dob = dob;
     }
 
+    public FilmActor(String firstName, String lastName, String dob) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+    }
+
     public int getId() {
         return id;
     }
