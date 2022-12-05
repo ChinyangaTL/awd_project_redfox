@@ -18,8 +18,10 @@
 <body>
 
 <c:set var="movie" value='<%= request.getAttribute("currentMovie") %>'>
-    
+
 </c:set>
+    
+
 <article class='cocktail'>
     <div class='img-container'>
         <img src=${movie.imgUrl} alt=${movie.movieTitle} />
@@ -38,10 +40,13 @@
 
 <div>
     <p>Seen this movie? Give it a rating</p>
-    <form method="">
+    <form method="GET" action="ClientController">
         <input type="number" name="rating" min="0" max="5">
+        <input type="hidden" name="command" value="RATE_MOVIE" />
+        <input type="hidden" name="movieId" value="${movie.id}" />
         <input type="submit" value="Rate" />
     </form>
 </div>
+
 </body>
 </html>

@@ -54,15 +54,15 @@ public class ClientController extends HttpServlet {
     }
 
     private void rateMovie(HttpServletRequest request, HttpServletResponse response) {
+        int movieId = Integer.parseInt(request.getParameter("movieId"));
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
 
     }
 
     private void viewSingleMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int movieId = Integer.parseInt(request.getParameter("singleMovieId"));
         Movie movie = clientDAO.getSingleMovie(movieId);
-
-        System.out.println(movie);
-        System.out.println("is anyhone home");
 
         request.setAttribute("currentMovie", movie);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/single_movie.jsp");
