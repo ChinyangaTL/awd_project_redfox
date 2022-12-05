@@ -7,9 +7,17 @@
 <body>
 <main>
     <section class="section-center">
-        <input type="button" value="Add Employee"
-               onclick="window.location.href='add-employee-form.jsp'; return false;"
+        <input type="button" value="Add New Actor"
+               onclick="window.location.href='add_actor_form.jsp'; return false;"
         />
+        <input type="button" value="Add New Director"
+               onclick="window.location.href='add_director_form.jsp'; return false;"
+        />
+
+        <input type="button" value="Add Movie"
+               onclick="window.location.href='add_movie_form.jsp'; return false;"
+        />
+
 
         <c:forEach var="movie" items="${movie_list}">
             <article class='employee-item'>

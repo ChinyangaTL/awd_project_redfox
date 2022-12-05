@@ -1,16 +1,54 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: les_miserables
-  Date: 05/12/22
-  Time: 01:58
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+
+<head>
+    <title>Add Actor</title>
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/add-student-style.css">
+</head>
+
+<body>
+
+<div id="container">
+    <h3>Add Actor</h3>
+
+    <form action="EmployeeController" method="GET">
+
+        <input type="hidden" name="command" value="ADD_ACTOR" />
+
+        <table>
+            <tbody>
+            <tr>
+                <td><label>First Name:</label></td>
+                <td><input type="text" name="firstName" /></td>
+            </tr>
+
+            <tr>
+                <td><label>Surname:</label></td>
+                <td><input type="text" name="surname" /></td>
+            </tr>
+
+            <tr>
+                <td><label>Date Of Birth:</label></td>
+                <td><input type="text" name="dob" /></td>
+            </tr>
+
+            <tr>
+                <td><label></label></td>
+                <td><input type="submit" value="Save" class="save" /></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+
+    <div style="clear: both;"></div>
+
+    <p>
+        <a href="AdminController">Back to List</a>
+    </p>
+</div>
+</body>
+
 </html>
