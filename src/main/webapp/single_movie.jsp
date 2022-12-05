@@ -48,5 +48,13 @@
     </form>
 </div>
 
+<div>
+    <form method="GET" action="ClientController">
+        <input type="hidden" name="command" value="ADD_TO_FAVS" />
+        <input type="hidden" name="movieId" value="${movie.id}" />
+        <input type="submit" value="Add To Favs" />
+    </form>
+</div>
+
 </body>
 </html>

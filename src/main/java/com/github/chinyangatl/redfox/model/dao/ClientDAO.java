@@ -254,6 +254,49 @@ public class ClientDAO {
         }
     }
 
+
+    private int checkFavMovieCount(String userEmail) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.CHECK_FAV_MOVIE_COUNT);
+            statement.setString(1, userEmail);
+            resultSet = statement.executeQuery();
+
+            if(resultSet.next())  {
+                return resultSet.getInt(1);
+            }
+            return -1;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, resultSet);
+        }
+
+    }
+    public void addMovieToFavorites(String userEmail, int movieId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        int numberOfFavMovies = checkFavMovieCount(userEmail);
+        if(numberOfFavMovies < 6) {
+            try {
+                connection = dataSource.getConnection();
+                statement = connection.prepareStatement(SQLStatements.ADD_MOVIE_TO_USER_FAV);
+                statement.setString(1, userEmail);
+                statement.setInt(2, movieId);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                close(connection, statement, null);
+            }
+        }
+    }
+
     private void close(Connection connection, Statement statement, ResultSet resultSet) {
         try {
             if(connection != null) {
@@ -270,6 +313,8 @@ public class ClientDAO {
             throw new RuntimeException(e);
         }
     }
+
+
 }
 
 
