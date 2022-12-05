@@ -7,6 +7,10 @@ public class SQLStatements {
 
     public static final String QUERY_EMPLOYEE_ACCOUNT = "select * from employee where email = ? and password = ?";
 
+    public static final String QUERY_USER_ACCOUNT = "select * from user where email = ? and password = ?";
+
+    public static final String REGISTER_USER = "INSERT INTO user VALUES(?, ?, ?, ?, ?)";
+
     public static final String GET_MOVIES = "SELECT * FROM movie";
 
     public static final String GET_MOVIE_DIRECTOR = "SELECT director.id, director.firstName, director.surname, director.dob from movie_director \n" +
