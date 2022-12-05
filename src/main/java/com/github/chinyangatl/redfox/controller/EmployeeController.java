@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet(name = "EmployeeController", value = "/EmployeeController")
 public class EmployeeController extends HttpServlet {
@@ -55,9 +56,12 @@ public class EmployeeController extends HttpServlet {
         }  catch (Exception e) {
         throw new ServletException(e);
     }
-
-
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        employeeLogin(request, response);
+    }
+
 
     private void addActor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstName");
@@ -88,10 +92,16 @@ public class EmployeeController extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    private void employeeLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String loginResult = employeeDAO.login( request.getParameter("email"),  request.getParameter("password"));
+        request.setAttribute("loginResult", loginResult);
+
+        if(Objects.equals(loginResult, "Success")) {
+            doGet(request, response);
+        }
     }
+
 
     private void dummyInsert() {
         Movie movie = new Movie(2, "Raiders of the Lost Ark", "Adventure", "June 12, 1981", 5, "image", "lorem ispum");

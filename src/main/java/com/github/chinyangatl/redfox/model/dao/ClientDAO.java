@@ -15,6 +15,67 @@ public class ClientDAO {
         this.dataSource = dataSource;
     }
 
+    public String login(String email, String password) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.QUERY_USER_ACCOUNT);
+
+            statement.setString(1, email);
+            statement.setString(2, password);
+
+
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                System.out.println("Success");
+                System.out.println(resultSet.getString("role"));
+                return "Success";
+            }
+
+            return "No account found";
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
+    public String register(String firstName, String surname, String email, String password) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.REGISTER_USER);
+
+            statement.setString(1, firstName);
+            statement.setString(2, surname);
+            statement.setString(3, email);
+            statement.setString(4, password);
+            statement.setString(5, "user");
+
+
+            int affectedRows = statement.executeUpdate();
+
+            if(affectedRows ==1) {
+
+                return "Success";
+            }
+
+            return "No account found";
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, resultSet);
+        }
+    }
+
     public List<Movie> getMovies() {
         List<Movie> movies = new ArrayList<>();
         Connection connection = null;

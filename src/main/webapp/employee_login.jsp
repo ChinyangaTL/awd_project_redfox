@@ -1,17 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: les_miserables
-  Date: 04/12/22
-  Time: 19:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login</title>
 </head>
 <body>
-  <form action="AdminController" method="POST">
+  <form action="EmployeeController" method="POST">
     <table>
       <tbody>
       <tr>

@@ -17,6 +17,35 @@ public class EmployeeDAO {
     public EmployeeDAO(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+    public String login(String email, String password) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.QUERY_EMPLOYEE_ACCOUNT);
+
+            statement.setString(1, email);
+            statement.setString(2, password);
+
+
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                System.out.println("Success");
+                System.out.println(resultSet.getString("role"));
+                return "Success";
+            }
+
+            return "No account found";
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, null);
+        }
+    }
+
 
     public List<Movie> getMovies() {
         List<Movie> movies = new ArrayList<>();
