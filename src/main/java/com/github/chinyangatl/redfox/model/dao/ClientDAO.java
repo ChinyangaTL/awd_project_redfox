@@ -15,7 +15,7 @@ public class ClientDAO {
         this.dataSource = dataSource;
     }
 
-    public String login(String email, String password) {
+    public Client login(String email, String password) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -30,12 +30,15 @@ public class ClientDAO {
 
             resultSet = statement.executeQuery();
             if(resultSet.next()) {
-                System.out.println("Success");
-                System.out.println(resultSet.getString("role"));
-                return "Success";
+                String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("surname");
+                String userEmail = resultSet.getString("email");
+                String userPassword = resultSet.getString("surname");
+//                resultSet.getString("role"));
+                return new Client(firstName, lastName, userEmail, userPassword);
             }
 
-            return "No account found";
+            return null;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

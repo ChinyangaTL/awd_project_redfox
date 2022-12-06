@@ -1,5 +1,6 @@
 package com.github.chinyangatl.redfox.controller;
 
+import com.github.chinyangatl.redfox.model.beans.Client;
 import com.github.chinyangatl.redfox.model.beans.Movie;
 import com.github.chinyangatl.redfox.model.dao.ClientDAO;
 import jakarta.annotation.Resource;
@@ -55,32 +56,6 @@ public class ClientController extends HttpServlet {
             throw new ServletException(e);
         }
     }
-
-    private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) {
-        // TODO: CHANGE EMAIL TO DYNAMIC DEPENDING ON SESSION
-        clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")));
-        //clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")))
-    }
-
-    private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        int movieId = Integer.parseInt(request.getParameter("movieId"));
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        // TODO: CHANGE EMAIL TO DYNAMIC DEPENDING ON SESSION
-        String userEmail = "lip@shameless.com";
-        clientDAO.populateMovieRatingsTable(movieId, userEmail, rating);
-        clientDAO.updateMovieRating(movieId);
-
-    }
-
-    private void viewSingleMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int movieId = Integer.parseInt(request.getParameter("singleMovieId"));
-        Movie movie = clientDAO.getSingleMovie(movieId);
-
-        request.setAttribute("currentMovie", movie);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/single_movie.jsp");
-        requestDispatcher.forward(request, response);
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -113,21 +88,27 @@ public class ClientController extends HttpServlet {
             request.setAttribute("registerResult", registerResult);
 
             if(Objects.equals(registerResult, "Success")) {
+                Client client = new Client(firstName, surname, email, password);
+                HttpSession session = request.getSession();
+                session.setAttribute("clientFromSession", client);
                 doGet(request, response);
             }
         }
-
-
-
-
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String loginResult = clientDAO.login( request.getParameter("email"),  request.getParameter("password"));
-        request.setAttribute("loginResult", loginResult);
+        Client client = clientDAO.login( request.getParameter("email"),  request.getParameter("password"));
+//        request.setAttribute("loginResult", loginResult);
 
-        if(Objects.equals(loginResult, "Success")) {
+
+        if(client != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("clientFromSession", client);
+//            request.setAttribute("client", client);
             doGet(request, response);
+        } else {
+            String error = "check your credentials";
+            request.setAttribute("error", error);
         }
     }
 
@@ -137,5 +118,36 @@ public class ClientController extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
         requestDispatcher.forward(request, response);
     }
+
+
+    private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) {
+
+        HttpSession session = request.getSession();
+        Client client = (Client) session.getAttribute("clientFromSession");
+        clientDAO.addMovieToFavorites(client.getEmail(), Integer.parseInt(request.getParameter("movieId")));
+        //clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")))
+    }
+
+    private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        int movieId = Integer.parseInt(request.getParameter("movieId"));
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
+        HttpSession session = request.getSession();
+        Client client = (Client) session.getAttribute("clientFromSession");
+        String userEmail = client.getEmail();
+        clientDAO.populateMovieRatingsTable(movieId, userEmail, rating);
+        clientDAO.updateMovieRating(movieId);
+
+    }
+
+    private void viewSingleMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int movieId = Integer.parseInt(request.getParameter("singleMovieId"));
+        Movie movie = clientDAO.getSingleMovie(movieId);
+
+        request.setAttribute("currentMovie", movie);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/single_movie.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
 
 }

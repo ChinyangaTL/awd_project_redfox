@@ -31,10 +31,16 @@
 
   <section class="menu section">
 
-    <div className="title">
+    <div class="title">
       <h2>RedFox</h2>
-      <div className="underline"></div>
+      <div class="underline"></div>
     </div>
+
+    <nav>
+      <c:set var="user" value='<%= session.getAttribute("client") %>'/>
+        <p>Welcome ${user.getFirstName()}</p>
+
+    </nav>
 
     <jsp:include page="components/categories.jsp"/>
 
