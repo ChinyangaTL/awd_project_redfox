@@ -20,4 +20,9 @@ public class Client extends GeneralActor{
     public String getLastName() {
         return lastName;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

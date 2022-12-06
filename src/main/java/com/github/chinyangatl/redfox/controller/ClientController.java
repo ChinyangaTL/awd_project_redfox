@@ -98,6 +98,7 @@ public class ClientController extends HttpServlet {
                 Client client = new Client(firstName, surname, email, password);
                 HttpSession session = request.getSession();
                 session.setAttribute("clientFromSession", client);
+                System.out.println(client.toString());
                 doGet(request, response);
             }
         }
@@ -145,15 +146,20 @@ public class ClientController extends HttpServlet {
 
     private void getFavoriteMovies(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Movie> favoriteMovies = new ArrayList<>();
-        for(Integer movieID : favoriteMovieList) {
-            favoriteMovies.add(clientDAO.getSingleMovie(movieID));
-        }
+//        for(Integer movieID : favoriteMovieList) {
+//            favoriteMovies.add(clientDAO.getSingleMovie(movieID));
+//        }
+
 
         HttpSession session = request.getSession();
+        Client client = (Client) session.getAttribute("clientFromSession");
+        favoriteMovies = clientDAO.getFavoriteMovies(client.getEmail());
         session.setAttribute("favoriteMovies", favoriteMovies);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/favorite_five.jsp");
         requestDispatcher.forward(request, response);
+
+
     }
 
     private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {

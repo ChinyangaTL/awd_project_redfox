@@ -49,7 +49,12 @@
 
     <jsp:include page="components/categories.jsp"/>
 
+    <c:if test="${favCategory != null}">
+      <p>Because you like <%= favCategory%></p>
+    </c:if>
+
     <section class="section-center">
+
       <c:if test="${favCategory != 'All'}">
         <c:forEach var="movie" items="${movie_list}">
           <c:if test="${favCategory.toLowerCase() == movie.genre.toLowerCase()}">
@@ -79,6 +84,7 @@
       </c:if>
     </section>
 
+    All Movies
     <section class="section-center">
 
 

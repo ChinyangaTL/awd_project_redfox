@@ -119,6 +119,46 @@ public class ClientDAO {
 
     }
 
+    public List<Movie> getFavoriteMovies(String userEmail) {
+        List<Movie> movies = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQLStatements.GET_FAVORITE_MOVIES);
+            statement.setString(1, userEmail);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()){
+                int movieId = resultSet.getInt("id");
+                String movieTitle = resultSet.getString("movieTitle");
+                String genre = resultSet.getString("genre");
+                String releaseDate = resultSet.getString("releaseDate");
+                float rating = resultSet.getFloat("rating");
+                String imgUrl = resultSet.getString("img");
+                String description = resultSet.getString("description");
+
+                Movie movie = new Movie(movieId, movieTitle, genre, releaseDate, rating, imgUrl, description);
+
+
+                Director director = getMovieDirector(movieId);
+                movie.setDirector(director);
+
+                List<Actor> actors = getMovieCast(movieId);
+                movie.setActors((ArrayList<Actor>) actors);
+
+                movies.add(movie);
+            }
+            return movies;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, statement, resultSet);
+        }
+
+    }
     public Movie getSingleMovie(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -157,6 +197,7 @@ public class ClientDAO {
             close(connection, statement, resultSet);
         }
     }
+
 
 
     private Director getMovieDirector(int id) {
