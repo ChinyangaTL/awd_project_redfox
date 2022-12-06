@@ -129,8 +129,6 @@ public class ClientController extends HttpServlet {
 
     private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
         HttpSession session = request.getSession();
         Client client = (Client) session.getAttribute("clientFromSession");
         int movieId = clientDAO.addMovieToFavorites(client.getEmail(), Integer.parseInt(request.getParameter("movieId")));

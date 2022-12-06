@@ -1,9 +1,6 @@
 package com.github.chinyangatl.redfox.controller;
 
-import com.github.chinyangatl.redfox.model.beans.Actor;
-import com.github.chinyangatl.redfox.model.beans.Director;
-import com.github.chinyangatl.redfox.model.beans.Employee;
-import com.github.chinyangatl.redfox.model.beans.Movie;
+import com.github.chinyangatl.redfox.model.beans.*;
 import com.github.chinyangatl.redfox.model.dao.EmployeeDAO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.*;
@@ -50,6 +47,8 @@ public class EmployeeController extends HttpServlet {
                     addActor(request, response);
                 case "ADD_DIRECTOR":
                     addDirector(request, response);
+                case "ADD_MOVIE":
+                    addMovie(request, response);
                 default:
                     listMovies(request, response);
             }
@@ -82,6 +81,62 @@ public class EmployeeController extends HttpServlet {
         Director director = new Director(firstName, surname, dob);
 
         employeeDAO.addDirector(director);
+        listMovies(request, response);
+    }
+
+    private void addMovie(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String movieTitle = request.getParameter("movieTitle");
+        String releaseDate = request.getParameter("releaseDate");
+        String img = request.getParameter("img");
+        String genre = request.getParameter("genre");
+        String description = request.getParameter("description");
+
+        ArrayList<Actor> actors = new ArrayList<>();
+        String castMember1 = request.getParameter("castMember1");
+        String castMember2 = request.getParameter("castMember2");
+        String castMember3 = request.getParameter("castMember3");
+
+        String actor1[] = castMember1.split(" ");
+        Actor filmActor1 = new Actor(actor1[0], actor1[1]);
+        filmActor1.setDob("June 1, 1987");
+        actors.add(filmActor1);
+        employeeDAO.addActor(filmActor1);
+
+
+        if(castMember2 == null) {
+            return;
+        } else {
+            String actor2[] = castMember1.split(" ");
+            Actor filmActor2 = new Actor(actor2[0], actor2[1]);
+            filmActor1.setDob("July 1, 1987");
+            actors.add(filmActor2);
+            employeeDAO.addActor(filmActor2);
+        }
+
+        if(castMember3 == null) {
+            return;
+        } else {
+            String[] actor3 = castMember1.split(" ");
+            Actor filmActor3 = new Actor(actor3[0], actor3[1]);
+            filmActor1.setDob("May 1, 1984");
+            actors.add(filmActor3);
+            employeeDAO.addActor(filmActor3);
+        }
+
+        String director = request.getParameter("director");
+        String directorName[] = director.split(" ");
+
+        Director movieDirector = new Director(directorName[0], directorName[1]);
+        movieDirector.setDob("March 12, 1964");
+        employeeDAO.addDirector(movieDirector);
+
+
+        Movie movie = new Movie(movieTitle, releaseDate, genre, img, description);
+        movie.setActors(actors);
+        movie.setDirector(movieDirector);
+        movie.setRating(0);
+
+        employeeDAO.addMovie(movie);
         listMovies(request, response);
     }
 
