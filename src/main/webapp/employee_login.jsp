@@ -1,20 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Employee Login</title>
+  <link rel="stylesheet" href="./styles/globalStyles.css">
+  <link rel="stylesheet" href="./styles/components.css">
 </head>
 <body>
+<main>
   <form action="EmployeeController" method="POST">
     <table>
       <tbody>
       <tr>
         <td><label>Email:</label></td>
-        <td><input type="email" name="email" /></td>
+        <td><input required type="email" name="email" /></td>
       </tr>
 
       <tr>
         <td><label>Password:</label></td>
-        <td><input type="password" name="password" /></td>
+        <td><input required type="password" name="password" /></td>
       </tr>
 
       <tr>
@@ -24,6 +27,10 @@
 
       </tbody>
     </table>
+    <a href="login.jsp">User Login</a>  <br/>
+    <a href="admin_login.jsp">Admin Login</a>
   </form>
+</main>
+
 </body>
 </html>

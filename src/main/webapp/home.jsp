@@ -31,14 +31,30 @@
 
   <section class="menu section">
 
-    <div className="title">
+    <div class="title">
       <h2>RedFox</h2>
-      <div className="underline"></div>
+      <div class="underline"></div>
     </div>
+
+    <nav>
+      <c:set var="user" value='<%= session.getAttribute("client") %>'/>
+        <p>Welcome ${user.getFirstName()}</p>
+
+      <form action="ClientController" method="get">
+        <input type="hidden" name="command" value="GET_FAVS" />
+        <input type="submit" value="My Fav Five">
+      </form>
+
+    </nav>
 
     <jsp:include page="components/categories.jsp"/>
 
+    <c:if test="${favCategory != null}">
+      <p>Because you like <%= favCategory%></p>
+    </c:if>
+
     <section class="section-center">
+
       <c:if test="${favCategory != 'All'}">
         <c:forEach var="movie" items="${movie_list}">
           <c:if test="${favCategory.toLowerCase() == movie.genre.toLowerCase()}">
@@ -68,6 +84,7 @@
       </c:if>
     </section>
 
+    All Movies
     <section class="section-center">
 
 

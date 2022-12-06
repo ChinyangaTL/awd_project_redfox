@@ -51,4 +51,6 @@ public class SQLStatements {
     public static final String CHECK_FAV_MOVIE_COUNT = "SELECT COUNT(movieId) FROM user_fav_movies WHERE userEmail = ?";
 
     public static final String ADD_MOVIE_TO_USER_FAV = "INSERT INTO user_fav_movies VALUES(?, ?)";
+
+    public static final String GET_FAVORITE_MOVIES = "SELECT * FROM movie INNER JOIN user_fav_movies on movie.id = user_fav_movies.movieId where userEmail = ?";
 }

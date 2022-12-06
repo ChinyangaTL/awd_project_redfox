@@ -23,6 +23,14 @@ public class Movie {
         this.description = description;
     }
 
+    public Movie(String movieTitle, String releaseDate, String genre, String imgUrl, String description) {
+        this.movieTitle = movieTitle;
+        this.releaseDate = releaseDate;
+        this.genre = genre;
+        this.imgUrl = imgUrl;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

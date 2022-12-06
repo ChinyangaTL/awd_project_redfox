@@ -5,6 +5,10 @@ public class Director extends FilmActor{
         super(firstName, lastName, dob);
     }
 
+    public Director(String firstName, String lastName) {
+        super(firstName, lastName);
+    }
+
     public Director(int id, String firstName, String lastName, String dob) {
         super(id, firstName, lastName, dob);
     }

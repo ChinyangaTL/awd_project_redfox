@@ -11,6 +11,11 @@ public class FilmActor {
         this.dob = dob;
     }
 
+    public FilmActor(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public FilmActor(String firstName, String lastName, String dob) {
         this.firstName = firstName;
         this.lastName = lastName;

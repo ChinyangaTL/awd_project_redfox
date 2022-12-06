@@ -93,8 +93,12 @@ public class AdminController extends HttpServlet {
         String loginResult = adminDAO.login( request.getParameter("email"),  request.getParameter("password"));
         request.setAttribute("loginResult", loginResult);
 
+        String message = "Check your credentials";
+
         if(Objects.equals(loginResult, "Success")) {
            doGet(request, response);
+        } else {
+            request.setAttribute("login_fail", message);
         }
     }
 }
