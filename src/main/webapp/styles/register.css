@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --red: hsl(0, 100%, 74%);
+    --green: hsl(154, 59%, 51%);
+    --blue: hsl(248, 32%, 49%);
+    --dark-blue: hsl(249, 10%, 26%);
+    --grayish-blue: hsl(246, 25%, 77%);
+
+    --box-shadow: 0px 5px 10px rgba(0,0,0,0.6);
+    --border-radius: 5px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+}
+
+.btn-primary {
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.btn-secondary {
+    background-color: var(--blue)
+}
+
+.btn strong {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+}
+
+body {
+    /*background-image: url('./images/bg-intro-desktop.png');*/
+    background-color: var(--red);
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+}
+
+.container {
+    transform: scale(.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 3rem 5rem;
+}
+
+.container .text-wrapper {
+    padding: 0 3rem;
+    color: #fff;
+}
+
+.container .text-wrapper h1 {
+    font-family: Poppins, sans-serif;
+    font-weight: bolder;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.text-wrapper h2.title {
+    display: none;
+}
+
+.container .form {
+    background-color: rgb(255, 245, 245);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.container .form .t-and-c {
+    display: inline-block;
+    text-align: center;
+    padding: 2rem;
+    color: lightgray;
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+}
+
+.container .form .t-and-c a {
+    text-decoration: none;
+    color: var(--red);
+    font-family: Poppins, sans-serif;
+    font-weight: bolder;
+}
+
+.form-control {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control input {
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    caret-color: var(--blue);
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 2rem;
+    border: 1px solid lightgray;
+    border-radius: var(--border-radius);
+}
+
+.form-control.show-error input {
+    border: 2px solid var(--red)
+}
+
+.form-control.success input {
+    border: 2px solid var(--green);
+}
+
+.form-control input:focus {
+    outline: none;
+    border: 1px solid var(--dark-blue)
+}
+
+.form-control input::placeholder {
+    font-family: Poppins, sans-serif;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.form-control .error-icon {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: hidden;
+}
+
+.form-control.show-error .error-icon {
+    visibility: visible;
+}
+
+.form-control .error-message {
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    color: var(--red);
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    visibility: hidden;
+}
+
+.form-control.show-error .error-message {
+    visibility: visible;
+}
+
+@media(max-width: 890px) {
+    .btn {
+        font-size: .8rem;
+    }
+}
+
+@media(max-width: 820px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .text-wrapper {
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media(max-width: 768px) {
+    .container {
+        padding: 1rem 2rem;
+    }
+
+    .container .text-wrapper {
+        padding: 0 0rem;
+        color: #fff;
+    }
+
+    .text-wrapper h1.title {
+        display: none;
+    }
+
+    .text-wrapper h2.title {
+        display: block;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        font-family: Poppins, sans-serif;
+        font-weight: bolder;
+    }
+
+
+}
+
+@media(max-width: 400px) {
+    .btn {
+        padding: 1rem 1rem;
+    }
+}

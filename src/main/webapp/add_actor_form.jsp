@@ -4,11 +4,13 @@
 <head>
     <title>Add Actor</title>
 
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/add-student-style.css">
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/components.css">
 </head>
 
 <body>
+<main>
+
 
 <div id="container">
     <h3>Add Actor</h3>
@@ -46,9 +48,11 @@
     <div style="clear: both;"></div>
 
     <p>
-        <a href="AdminController">Back to List</a>
+        <a href="employee_dashboard.jsp">Back to List</a>
     </p>
 </div>
+
+</main>
 </body>
 
 </html>

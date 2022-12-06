@@ -11,10 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bad48969-7afa-4916-9d4f-ca394a64d0e7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/model/dao/ClientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/utils/SQLStatements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/single_movie.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/single_movie.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/chinyangatl/redfox/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/add-employee-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/add-employee-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin_login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin_login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employee_dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employee_dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employee_login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employee_login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/globalStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/styles/globalStyles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,7 @@
         <option value="Class" />
         <option value="HTML File" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
