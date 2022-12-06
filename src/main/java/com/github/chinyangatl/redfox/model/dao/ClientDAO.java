@@ -280,7 +280,8 @@ public class ClientDAO {
         }
 
     }
-    public void addMovieToFavorites(String userEmail, int movieId) {
+    public int addMovieToFavorites(String userEmail, int movieId) {
+
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -292,12 +293,15 @@ public class ClientDAO {
                 statement.setString(1, userEmail);
                 statement.setInt(2, movieId);
                 statement.executeUpdate();
+                return movieId;
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } finally {
                 close(connection, statement, null);
             }
         }
+        return -1;
     }
 
     private void close(Connection connection, Statement statement, ResultSet resultSet) {

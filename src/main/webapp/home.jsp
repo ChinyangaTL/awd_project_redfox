@@ -40,6 +40,11 @@
       <c:set var="user" value='<%= session.getAttribute("client") %>'/>
         <p>Welcome ${user.getFirstName()}</p>
 
+      <form action="ClientController" method="get">
+        <input type="hidden" name="command" value="GET_FAVS" />
+        <input type="submit" value="My Fav Five">
+      </form>
+
     </nav>
 
     <jsp:include page="components/categories.jsp"/>

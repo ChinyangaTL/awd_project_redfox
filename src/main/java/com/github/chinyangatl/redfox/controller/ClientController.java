@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ public class ClientController extends HttpServlet {
 
     @Resource(name = "jdbc/redfox")
     private DataSource dataSource;
+    List<Integer> favoriteMovieList;
 
     @Override
     public void init() throws ServletException {
@@ -31,6 +33,9 @@ public class ClientController extends HttpServlet {
             e.printStackTrace();
             throw new ServletException(e);
         }
+
+        favoriteMovieList = new ArrayList<>();
+
     }
 
     @Override
@@ -49,6 +54,8 @@ public class ClientController extends HttpServlet {
                     rateMovie(request, response);
                 case "ADD_TO_FAVS":
                     addMovieToUserFavs(request, response);
+                case "GET_FAVS":
+                    getFavoriteMovies(request, response);
                 default:
                     listMovies(request, response);
             }
@@ -120,12 +127,35 @@ public class ClientController extends HttpServlet {
     }
 
 
-    private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) {
+    private void addMovieToUserFavs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 
         HttpSession session = request.getSession();
         Client client = (Client) session.getAttribute("clientFromSession");
-        clientDAO.addMovieToFavorites(client.getEmail(), Integer.parseInt(request.getParameter("movieId")));
+        int movieId = clientDAO.addMovieToFavorites(client.getEmail(), Integer.parseInt(request.getParameter("movieId")));
+        favoriteMovieList.add(movieId);
+        session.setAttribute("favMovieListIds", favoriteMovieList);
+
+//        Cookie theCookie = new Cookie("favMovieListCookie", favoriteMovieList.toString());
+//        theCookie.setMaxAge(60*60*24*365);
+//
+//        response.addCookie(theCookie);
+        listMovies(request, response);
         //clientDAO.addMovieToFavorites("lip@shameless.com", Integer.parseInt(request.getParameter("movieId")))
+    }
+
+    private void getFavoriteMovies(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Movie> favoriteMovies = new ArrayList<>();
+        for(Integer movieID : favoriteMovieList) {
+            favoriteMovies.add(clientDAO.getSingleMovie(movieID));
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("favoriteMovies", favoriteMovies);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/favorite_five.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     private void rateMovie(HttpServletRequest request, HttpServletResponse response) throws SQLException {
